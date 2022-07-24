@@ -1,0 +1,48 @@
+﻿@page
+@model View
+@{
+    ViewBag.Title = "Users";
+    ViewBag.SubTitle = Model.User.Name;
+}
+
+<div class="row">
+
+    <div class="col-8">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Details</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <display for="User.FirstName"/>
+                    <display for="User.LastName"/>
+                    <display for="User.Email"/>
+                    <a asp-page="Edit" asp-route-id="@Model.User.Id">Edit</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Organisations</h3>
+            </div>
+            <table class="table table table-vcenter card-table">
+                <tbody>
+                @foreach (var item in Model.Organisations)
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <a asp-page="/Organisation/View" asp-route-id="@item.Id">@item.Title</a>
+                            </div>
+                            <div class="text-muted">@item.Description</div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

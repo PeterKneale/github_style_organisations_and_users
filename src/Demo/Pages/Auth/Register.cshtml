@@ -1,0 +1,18 @@
+﻿@page
+@model Register
+@{
+    ViewBag.Title = "Auth";
+    ViewBag.SubTitle = "Register";
+}
+
+<div asp-validation-summary="All"></div>
+
+<form method="post">
+    <editor for="FirstName"/>
+    <editor for="LastName"/>
+    <editor for="Email"/>
+    <editor for="Password"/>
+    <div class="form-group">
+        <input type="submit" value="Register" class="btn btn-primary"/>
+    </div>
+</form>

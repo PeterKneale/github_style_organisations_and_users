@@ -1,0 +1,41 @@
+﻿@page
+@model Index
+@{
+    ViewBag.Title = "Users";
+    ViewBag.SubTitle = "Browse users";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Users</h3>
+                <div class="card-actions">
+                    <a hasp-page="/Users/Invite" class="btn btn-primary">
+                        Invite new
+                    </a>
+                </div>
+            </div>
+            <table class="table table table-vcenter card-table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Data)
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <a asp-page="/Users/View" asp-route-id="@item.Id">@item.Name</a>
+                            </div>
+                            <div class="text-muted">@item.Email</div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

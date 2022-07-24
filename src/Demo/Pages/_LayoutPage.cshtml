@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="page">
+    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                <a href="/">Demo</a>
+            </h1>
+            <div class="navbar-nav flex-row order-md-last">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Users/Index">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Organisations/Index">Organisations</a>
+                    </li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu" aria-expanded="false">
+                            <div class="d-none d-xl-block ps-2">
+                                <div>@User.GetUserFullName()</div>
+                                <div class="mt-1 small text-muted">@User.GetUserEmail()</div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <a class="dropdown-item" asp-page="/Account">Account</a>
+                            <a class="dropdown-item" asp-page="/Settings">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-page="/Settings">Settings</a>
+                            <a class="dropdown-item" asp-page="/Auth/Logout">Logout</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Auth/Register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Auth/Login">Login</a>
+                    </li>
+                }
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <partial name="PageTitle"/>
+        <div class="page-body">
+            <div class="container-xl">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>

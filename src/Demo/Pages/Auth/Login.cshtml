@@ -1,0 +1,16 @@
+﻿@page
+@model Login
+@{
+    ViewBag.Title = "Auth";
+    ViewBag.SubTitle = "Login";
+}
+
+<div asp-validation-summary="All"></div>
+
+<form method="post">
+    <editor for="Email"/>
+    <editor for="Password"/>
+    <div class="form-group">
+        <input type="submit" value="Login" class="btn btn-primary"/>
+    </div>
+</form>
